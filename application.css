@@ -1,0 +1,15 @@
+table {
+  width: 800px;
+  height: 200px;
+  border: 1px solid black;
+  background-color: #bbada0;
+}
+
+td {
+  width: 800px;
+  height: 200px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 2em;
+  background-color: #cdc1b4;
+}

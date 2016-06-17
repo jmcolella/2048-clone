@@ -1,15 +1,42 @@
+#header-container {
+  text-align: center;
+  color: #776e65;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
 table {
-  width: 800px;
-  height: 200px;
-  border: 1px solid black;
+  width: 90px;
+  border-radius: 3%;
   background-color: #bbada0;
+  margin: 0 auto;
+  border-spacing: 10px;
+  table-layout:fixed;
 }
 
 td {
-  width: 800px;
-  height: 200px;
-  border: 1px solid black;
+  width: 90px;
+  height: 90px;
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: #cdc1b4;
+  border-radius: 3%;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#begin-message {
+  text-align: center;
+  color: #776e65;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+
+#win-message {
+  display: none;
+  text-align: center;
+  color: #776e65;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }

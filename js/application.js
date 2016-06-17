@@ -12,6 +12,7 @@ $(document).ready(function() {
           };
         };
       };
+      $("#begin-message").hide();
     } else if (x == 37) {
       game.moveLeft();
       for(i = 0; i < game.board.length; i++) {

@@ -157,6 +157,18 @@ Game.prototype.displayBoard = function() {
   });
 };
 
+Game.prototype.isWon = function() {
+  var num = 0
+  this.board.forEach(function(row) {
+    row.forEach(function(cell){
+      if(cell === 256) {
+        num = 256
+      };
+    }.bind(num));
+  }.bind(num));
+  return num
+};
+
 
 
 

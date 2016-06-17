@@ -25,6 +25,13 @@ $(document).ready(function() {
           };
         };
       };
+      if(game.isWon() === 256) {
+        $("#win-message").show();
+        $(document).off('keyup');
+         setTimeout(function(){
+          window.location.reload();
+        }, 5000);
+      };
     } else if (x == 39) {
       game.moveRight();
       for(i = 0; i < game.board.length; i++) {
@@ -36,6 +43,13 @@ $(document).ready(function() {
             game.determineColor($("#row-" + (i+1)).find(".cell-" + (j+1)));
           };
         };
+      };
+      if(game.isWon() === 256) {
+        $("#win-message").show();
+        $(document).off('keyup');
+         setTimeout(function(){
+          window.location.reload();
+        }, 5000);
       };
     } else if (x == 38) {
       game.moveUp();
@@ -49,6 +63,12 @@ $(document).ready(function() {
           };
         };
       };
+      if(game.isWon() === 256) {
+        $("#win-message").show();
+         setTimeout(function(){
+          window.location.reload();
+        }, 5000);
+      };
     }  else if (x == 40) {
       game.moveDown();
       for(i = 0; i < game.board.length; i++) {
@@ -60,6 +80,13 @@ $(document).ready(function() {
             game.determineColor($("#row-" + (i+1)).find(".cell-" + (j+1)));
           };
         };
+      };
+      if(game.isWon() === 256) {
+        $("#win-message").show();
+        $(document).off('keyup');
+        setTimeout(function(){
+          window.location.reload();
+        }, 5000);
       };
     };
   });

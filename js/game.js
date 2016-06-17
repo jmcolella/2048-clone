@@ -30,28 +30,28 @@ Game.prototype.populateRandomOpenTile = function() {
   this.board[ position[0] ][ position[1] ] = _.sample(this.generateRandomTile)
 }
 
-Game.prototype.combineLeft = function() {
-  for (i = 0; i < this.board.length; i++) {
-    for (j = 0; j < this.board[i].length; j++) {
-      if (this.board[i][j] === this.board[i][j + 1]) {
-        this.board[i][j] *= 2
+Game.prototype.combineLeft = function(board) {
+  for (i = 0; i < board.length; i++) {
+    for (j = 0; j < board[i].length; j++) {
+      if (board[i][j] === board[i][j + 1]) {
+        board[i][j] *= 2
         if (j === 0) {
-          if (this.board[i][j + 2] === 0) {
-            this.board[i][j + 1] = 0;
-          } else if (this.board[i][j + 2] != 0) {
-            this.board[i][j + 1] = this.board[i][j + 2];
-            this.board[i][j + 2] = this.board[i][j + 3];
-            this.board[i][j + 3] = 0;
+          if (board[i][j + 2] === 0) {
+            board[i][j + 1] = 0;
+          } else if (board[i][j + 2] != 0) {
+            board[i][j + 1] = board[i][j + 2];
+            board[i][j + 2] = board[i][j + 3];
+            board[i][j + 3] = 0;
           }
         } else if (j === 1) {
-           if (this.board[i][j + 2] === 0) {
-            this.board[i][j + 1] = 0;
-          } else if (this.board[i][j + 2] != 0) {
-            this.board[i][j + 1] = this.board[i][j + 2];
-            this.board[i][j + 2] = 0;
+           if (board[i][j + 2] === 0) {
+            board[i][j + 1] = 0;
+          } else if (board[i][j + 2] != 0) {
+            board[i][j + 1] = board[i][j + 2];
+            board[i][j + 2] = 0;
           }
         } else if (j === 2) {
-            this.board[i][j + 1] = 0;
+            board[i][j + 1] = 0;
         };
       };
     };
@@ -65,14 +65,14 @@ Game.prototype.moveLeft = function() {
     return compactArr.concat(tempArr.fill(0))
   });
 
+  this.combineLeft(changedArray);
   if (this.board.join() === changedArray.join()) {
       this.board = changedArray;
-      this.combineLeft();
   } else {
     this.board = changedArray;
-    this.combineLeft();
     this.populateRandomOpenTile();
   }
+
   return this;
 };
 
@@ -123,22 +123,31 @@ Game.prototype.reverseRows = function(arr) {
 Game.prototype.determineColor = function(selector) {
   if (selector.text() === "2") {
     selector.css("background-color", "#eee4da");
+    selector.css("color", "#776e65");
   } else if (selector.text() === "4") {
     selector.css("background-color", "#ede0c8");
+    selector.css("color", "#776e65");
   } else if (selector.text() === "8") {
     selector.css("background-color", "#f2b179");
+    selector.css("color", "white");
   } else if (selector.text() === "16") {
     selector.css("background-color", "#f59563");
+    selector.css("color", "white");
   } else if (selector.text() === "32") {
     selector.css("background-color", "#f67c5f");
+    selector.css("color", "white");
   }  else if (selector.text() === "64") {
     selector.css("background-color", "#f65e3b");
+    selector.css("color", "white");
   }  else if (selector.text() === "128") {
     selector.css("background-color", "#edcf72");
+    selector.css("color", "white");
   } else if (selector.text() === "256") {
     selector.css("background-color", "#edcc61");
+    selector.css("color", "white");
   } else if (selector.text() === "512") {
     selector.css("background-color", "#edc850");
+    selector.css("color", "white");
   };
 };
 

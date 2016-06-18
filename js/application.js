@@ -31,6 +31,12 @@ $(document).ready(function() {
          setTimeout(function(){
           window.location.reload();
         }, 5000);
+      } else if( game.isLost() ) {
+        $("#lose-message").show();
+        $(document).off('keyup');
+        setTimeout(function(){
+          window.location.reload();
+        }, 5000);
       };
     } else if (x == 39) {
       game.moveRight();
@@ -48,6 +54,12 @@ $(document).ready(function() {
         $("#win-message").show();
         $(document).off('keyup');
          setTimeout(function(){
+          window.location.reload();
+        }, 5000);
+      } else if( game.isLost() ) {
+        $("#lose-message").show();
+        $(document).off('keyup');
+        setTimeout(function(){
           window.location.reload();
         }, 5000);
       };
@@ -68,6 +80,12 @@ $(document).ready(function() {
          setTimeout(function(){
           window.location.reload();
         }, 5000);
+      } else if( game.isLost() ) {
+        $("#lose-message").show();
+        $(document).off('keyup');
+        setTimeout(function(){
+          window.location.reload();
+        }, 5000);
       };
     }  else if (x == 40) {
       game.moveDown();
@@ -83,6 +101,12 @@ $(document).ready(function() {
       };
       if(game.isWon() === 256) {
         $("#win-message").show();
+        $(document).off('keyup');
+        setTimeout(function(){
+          window.location.reload();
+        }, 5000);
+      } else if( game.isLost() ) {
+        $("#lose-message").show();
         $(document).off('keyup');
         setTimeout(function(){
           window.location.reload();

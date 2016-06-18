@@ -4,7 +4,6 @@ function Game() {
 
 };
 
-
 Game.prototype.generateBoard = function() {
   var board = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]]
 
@@ -72,7 +71,6 @@ Game.prototype.moveLeft = function() {
     this.board = changedArray;
     this.populateRandomOpenTile();
   }
-
   return this;
 };
 
@@ -120,6 +118,104 @@ Game.prototype.reverseRows = function(arr) {
   });
 };
 
+Game.prototype.displayBoard = function() {
+  this.board.forEach(function(row) {
+    console.log(row);
+  });
+};
+
+Game.prototype.isWon = function() {
+  var num = 0
+  this.board.forEach(function(row) {
+    row.forEach(function(cell){
+      if(cell === 256) {
+        num = 256
+      };
+    }.bind(num));
+  }.bind(num));
+  return num
+};
+
+Game.prototype.isLost = function() {
+  var lost = false
+  if( this.checkLostRowOne() + this.checkLostRowTwoThree() + this.checkLostRowFour() === 16 ) {
+    lost = true
+  };
+  return lost
+};
+
+Game.prototype.checkLostRowOne = function() {
+  var lose = 0
+  for( var i=0; i < 1; i++ ) {
+    for( var j=0; j < this.board[i].length; j++ ) {
+      if( this.board[i][j] != 0 ) {
+        if( j === 0 ) {
+          if( this.board[i][j] != this.board[i][j + 1] &&  this.board[i][j] != this.board[i + 1][j]) {
+            lose += 1
+          }
+        } else if( j === 3 ) {
+          if( this.board[i][j] != this.board[i][j - 1] &&  this.board[i][j] != this.board[i + 1][j]) {
+            lose += 1
+          }
+        } else {
+           if( this.board[i][j] != this.board[i][j + 1] && this.board[i][j] != this.board[i][j - 1] &&  this.board[i][j] != this.board[i + 1][j]) {
+            lose += 1
+          };
+        };
+      };
+    };
+  };
+  return lose
+};
+
+Game.prototype.checkLostRowTwoThree = function() {
+  var lose = 0
+  for( var i=1; i < 3; i++ ) {
+    for( var j=0; j < this.board[i].length; j++ ) {
+      if( this.board[i][j] != 0 ) {
+        if( j === 0 ) {
+          if( this.board[i][j] != this.board[i][j + 1] &&  this.board[i][j] != this.board[i + 1][j] && this.board[i][j] != this.board[i - 1][j]) {
+            lose += 1
+          }
+        } else if( j === 3 ) {
+          if( this.board[i][j] != this.board[i][j - 1] &&  this.board[i][j] != this.board[i + 1][j] && this.board[i][j] != this.board[i-1][j]) {
+            lose += 1
+          }
+        } else {
+           if( this.board[i][j] != this.board[i][j + 1] && this.board[i][j] != this.board[i][j - 1] && this.board[i][j] != this.board[i + 1][j] && this.board[i][j] != this.board[i - 1][j]) {
+            lose += 1
+          };
+        };
+      };
+    };
+  };
+  return lose
+};
+
+Game.prototype.checkLostRowFour = function() {
+  var lose = 0
+  for( var i=3; i < 4; i++ ) {
+    for( var j=0; j < this.board[i].length; j++ ) {
+      if( this.board[i][j] != 0 ) {
+        if( j === 0 ) {
+          if( this.board[i][j] != this.board[i][j + 1] &&  this.board[i][j] != this.board[i - 1][j]) {
+            lose += 1
+          }
+        } else if( j === 3 ) {
+          if( this.board[i][j] != this.board[i][j - 1] &&  this.board[i][j] != this.board[i - 1][j]) {
+            lose += 1
+          }
+        } else {
+           if( this.board[i][j] != this.board[i][j + 1] && this.board[i][j] != this.board[i][j - 1] &&  this.board[i][j] != this.board[i - 1][j]) {
+            lose += 1
+          };
+        };
+      };
+    };
+  };
+  return lose
+};
+
 Game.prototype.determineColor = function(selector) {
   if (selector.text() === "2") {
     selector.css("background-color", "#eee4da");
@@ -149,24 +245,6 @@ Game.prototype.determineColor = function(selector) {
     selector.css("background-color", "#edc850");
     selector.css("color", "white");
   };
-};
-
-Game.prototype.displayBoard = function() {
-  this.board.forEach(function(row) {
-    console.log(row);
-  });
-};
-
-Game.prototype.isWon = function() {
-  var num = 0
-  this.board.forEach(function(row) {
-    row.forEach(function(cell){
-      if(cell === 256) {
-        num = 256
-      };
-    }.bind(num));
-  }.bind(num));
-  return num
 };
 
 

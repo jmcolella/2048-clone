@@ -40,3 +40,11 @@ td {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
+
+#lose-message {
+  display: none;
+  text-align: center;
+  color: #776e65;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}

@@ -7,7 +7,6 @@ function Game() {
 Game.prototype.generateBoard = function() {
   var board = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]]
 
-
   board[Math.floor((Math.random() * 4))].splice(Math.floor((Math.random() * 4)), 1, this.generateRandomTile.pop())
   board[Math.floor((Math.random() * 4))].splice(Math.floor((Math.random() * 4)), 1, this.generateRandomTile.pop())
 
@@ -57,6 +56,12 @@ Game.prototype.combineLeft = function(board) {
   };
 };
 
+Game.prototype.reverseRows = function(arr) {
+  return arr.map(function(row) {
+    return row.reverse();
+  });
+};
+
 Game.prototype.moveLeft = function() {
   var changedArray = this.board.map(function(row) {
     var compactArr = _.compact(row)
@@ -98,24 +103,11 @@ Game.prototype.moveUp = function() {
 Game.prototype.moveDown = function() {
   this.board = _.unzip(this.board);
 
-  var reverseArrayDown = this.reverseRows(this.board);
-
-  this.board = reverseArrayDown;
-  this.moveLeft();
-
-  var downArray = this.reverseRows(this.board);
-
-  this.board = downArray;
+  this.moveRight();
 
   this.board = _.unzip(this.board);
 
   return this;
-};
-
-Game.prototype.reverseRows = function(arr) {
-  return arr.map(function(row) {
-    return row.reverse();
-  });
 };
 
 Game.prototype.displayBoard = function() {
@@ -246,21 +238,3 @@ Game.prototype.determineColor = function(selector) {
     selector.css("color", "white");
   };
 };
-
-
-
-
-// Not in use but may be needed
-// Game.prototype.rotate = function( array ) {
-//   var newArray = []
-//   for (var i = 0; i < array.length; i++) {
-//     newArray.push([]);
-//   };
-
-//   for(var i = 0; i < array.length; i++) {
-//     for(var j = 0; j < array[0].length; j++) {
-//       newArray[j].push(array[i][j]);
-//     };
-//   };
-//   return newArray;
-// };

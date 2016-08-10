@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="application.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="js/mousetrap.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/application.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <title>256!</title>
+</head>
+<body>
+  <div id="header-container">
+    <h1>256!</h1>
+  </div>
+  <div class="board-container">
+    <table>
+      <tr id="row-1">
+        <td class="cell-1"></td>
+        <td class="cell-2"></td>
+        <td class="cell-3"></td>
+        <td class="cell-4"></td>
+      </tr>
+      <tr id="row-2">
+        <td class="cell-1"></td>
+        <td class="cell-2"></td>
+        <td class="cell-3"></td>
+        <td class="cell-4"></td>
+      </tr>
+      <tr id="row-3">
+        <td class="cell-1"></td>
+        <td class="cell-2"></td>
+        <td class="cell-3"></td>
+        <td class="cell-4"></td>
+      </tr>
+      <tr id="row-4">
+        <td class="cell-1"></td>
+        <td class="cell-2"></td>
+        <td class="cell-3"></td>
+        <td class="cell-4"></td>
+      </tr>
+    </table>
+  </div>
+  <div id="begin-message">
+    <p>Hit the space bar to begin!</p>
+  </div>
+  <div id="win-message">
+    <p>Congrats! You've hit the 256 tile!</p>
+    <p>The page will reload in 5 seconds for another round!</p>
+  </div>
+   <div id="lose-message">
+    <p>No more moves!</p>
+    <p>The page will reload in 5 seconds for another round!</p>
+  </div>
+</body>
+</html>
